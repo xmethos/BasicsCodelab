@@ -31,8 +31,10 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
+      - name: Accept Android SDK licences
+        run: yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: yes | sdkmanager --licenses && sh ./gradlew build --licenses sonar --info
+        run: sh ./gradlew build --licenses sonar --info
