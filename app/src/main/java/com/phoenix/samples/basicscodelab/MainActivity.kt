@@ -1,3 +1,5 @@
+package com.phoenix.samples.basicscodelab
+
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
